@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ErrorMessage } from "../ErrorMessage";
 import { isCityValid, isEmailValid, isNameValid } from "../utils/validations";
 import { FunctionalTextInput } from "./FunctionalTextInput";
+import { FunctionalPhoneInput } from "./FunctionalPhoneInput";
 
 const firstNameErrorMessage = "First name must be at least 2 characters long";
 const lastNameErrorMessage = "Last name must be at least 2 characters long";
@@ -92,26 +93,7 @@ export const FunctionalForm = () => {
       />
       <ErrorMessage message={cityErrorMessage} show={showCityError} />
 
-      <FunctionalTextInput 
-        labelText={"Phone"}
-        inputPrompts={{ 
-          value: cityInput,
-          onChange: ({target: {value}}) => setCityInput(value),
-        }}
-        isPhoneNumber={true}
-      />
-      <div className="input-wrap">
-        <label htmlFor="phone">Phone:</label>
-        <div id="phone-input-wrap">
-          <input type="text" id="phone-input-1" placeholder="55" />
-          -
-          <input type="text" id="phone-input-2" placeholder="55" />
-          -
-          <input type="text" id="phone-input-3" placeholder="55" />
-          -
-          <input type="text" id="phone-input-4" placeholder="5" />
-        </div>
-      </div>
+      <FunctionalPhoneInput />
 
       <ErrorMessage message={phoneNumberErrorMessage} show={true} />
 
