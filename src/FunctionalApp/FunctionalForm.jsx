@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ErrorMessage } from "../ErrorMessage";
-import { isCityValid, isEmailValid, isNameValid } from "../utils/validations";
+import { isCityValid, isEmailValid, isNameValid, isPhoneValid } from "../utils/validations";
 import { FunctionalTextInput } from "./FunctionalTextInput";
 import { FunctionalPhoneInput } from "./FunctionalPhoneInput";
 
@@ -15,23 +15,27 @@ export const FunctionalForm = () => {
   const [lastNameInput, setLastNameInput] = useState('');
   const [emailInput, setEmailInput] = useState('');
   const [cityInput, setCityInput] = useState('');
+  const [phoneInputState, setPhoneInputState] = useState(['','','','']);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const isFirstNameValid = isNameValid(firstNameInput);
   const isLastNameValid = isNameValid(lastNameInput);
   const emailIsValid = isEmailValid(emailInput);
   const cityIsValid = isCityValid(cityInput);
+  const phoneIsValid = isPhoneValid(phoneInputState);
 
   const showFirstNameError = !isFirstNameValid && isSubmitted;
   const showLastNameError = !isLastNameValid && isSubmitted;
   const showEmailError = !emailIsValid && isSubmitted;
   const showCityError = !cityIsValid && isSubmitted;
+  const showPhoneError = !phoneIsValid && isSubmitted;
 
   const doBadInputsExist = 
     !isFirstNameValid ||
     !isLastNameValid ||
     !emailIsValid ||
-    !cityIsValid; 
+    !cityIsValid ||
+    !phoneIsValid; 
 
   return (
     <form onSubmit={(e) => {
@@ -39,6 +43,8 @@ export const FunctionalForm = () => {
       setIsSubmitted(true);
       if (doBadInputsExist) {
         alert("Bad Inputs");
+      } else {
+        alert("Sucess!");
       }
     }}>
       <u>
@@ -93,9 +99,13 @@ export const FunctionalForm = () => {
       />
       <ErrorMessage message={cityErrorMessage} show={showCityError} />
 
-      <FunctionalPhoneInput />
+      <FunctionalPhoneInput 
+        phoneInputStateHandler={(phoneInputState) => {
+          setPhoneInputState(phoneInputState);
+        }}
+      />
 
-      <ErrorMessage message={phoneNumberErrorMessage} show={true} />
+      <ErrorMessage message={phoneNumberErrorMessage} show={showPhoneError} />
 
       <input type="submit" value="Submit" />
     </form>

@@ -1,7 +1,7 @@
 import { useRef, useState } from "react"
 import { FunctionalTextInput } from "./FunctionalTextInput"
 
-export const FunctionalPhoneInput = () => {
+export const FunctionalPhoneInput = ({ phoneInputStateHandler }) => {
   const [phoneInputState, setPhoneInputState] = useState(["","","",""]);
   const maxLengths = [2,2,2,1];
   const refs = [useRef(), useRef(), useRef(), useRef()];
@@ -26,7 +26,9 @@ export const FunctionalPhoneInput = () => {
     }
     
     setPhoneInputState(newState);
+    phoneInputStateHandler(newState);
   } 
+
   return (
     <div className="input-wrap">
       <label htmlFor="phone">Phone:</label>

@@ -18,3 +18,10 @@ export function isCityValid(string) {
 
     return decapitalizedCities.includes(string.toLowerCase());
 }
+
+export function isPhoneValid(array) {
+  const concatArray = array.join('');
+  const lengthIsSeven = concatArray.length === 7;
+  const isOnlyNumbers = /\d+$/.test(concatArray);
+  return lengthIsSeven && isOnlyNumbers;
+}
