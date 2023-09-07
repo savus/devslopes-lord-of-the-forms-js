@@ -7,21 +7,20 @@ export function isEmailValid(emailAddress) {
 }
 
 export function isNameValid(string) {
-  return string 
-    .split('')
-    .every((char) => char.toUpperCase() !== char.toLowerCase()) && string.length > 2;
+  return (
+    string
+      .split("")
+      .every((char) => char.toUpperCase() !== char.toLowerCase()) &&
+    string.length > 2
+  );
 }
 
 export function isCityValid(string) {
-  const decapitalizedCities = allCities
-    .map((city) => city.toLowerCase());
+  const decapitalizedCities = allCities.map((city) => city.toLowerCase());
 
-    return decapitalizedCities.includes(string.toLowerCase());
+  return decapitalizedCities.includes(string.toLowerCase());
 }
 
 export function isPhoneValid(array) {
-  const concatArray = array.join('');
-  const lengthIsSeven = concatArray.length === 7;
-  const isOnlyNumbers = /\d+$/.test(concatArray);
-  return lengthIsSeven && isOnlyNumbers;
+  return array.join("").length === 7;
 }

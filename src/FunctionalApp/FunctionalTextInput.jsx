@@ -1,5 +1,5 @@
 export const FunctionalTextInput = ({
-  labelText = '',
+  labelText = "",
   inputPrompts,
   isPhoneInput = false,
 }) => {
@@ -16,10 +16,3 @@ export const FunctionalTextInput = ({
     </>
   );
 };
-
-{
-  /* <div className="input-wrap">
-  <label>{"First Name"}:</label>
-  <input placeholder="Bilbo" />
-</div>; */
-}
