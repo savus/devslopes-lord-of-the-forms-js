@@ -11,6 +11,9 @@ const defaultUser = {
 };
 
 export class ClassApp extends Component {
+  state = {
+    userInformation: null
+  }
   render() {
     return (
       <>
@@ -19,10 +22,14 @@ export class ClassApp extends Component {
           userData={
             // toggle the following lines to change
             // null
-            defaultUser
+            this.state.userInformation
           }
         />
-        <ClassForm />
+        <ClassForm 
+          userDataHandler={(userInformation) => {
+            this.setState({userInformation: userInformation});
+          }}
+        />
       </>
     );
   }
