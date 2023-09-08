@@ -1,7 +1,12 @@
 import { Component } from "react";
 import { ErrorMessage } from "../ErrorMessage";
 import { ClassTextInput } from "./ClassTextInput";
-import { isCityValid, isEmailValid, isNameValid, isPhoneValid } from "../utils/validations";
+import {
+  isCityValid,
+  isEmailValid,
+  isNameValid,
+  isPhoneValid,
+} from "../utils/validations";
 import { ClassPhoneInput } from "./ClassPhoneInput";
 
 const firstNameErrorMessage = "First name must be at least 2 characters long";
@@ -16,7 +21,7 @@ export class ClassForm extends Component {
     lastNameInput: "",
     emailInput: "",
     cityInput: "",
-    phoneInputState: ["","","",""],
+    phoneInputState: ["", "", "", ""],
     isSubmitted: false,
   };
 
@@ -30,7 +35,7 @@ export class ClassForm extends Component {
       isSubmitted,
     } = this.state;
 
-    const {userDataHandler} = this.props;
+    const { userDataHandler } = this.props;
 
     const isFirstNameValid = isNameValid(firstNameInput);
     const isLastNameValid = isNameValid(lastNameInput);
@@ -44,11 +49,12 @@ export class ClassForm extends Component {
     const showCityError = !cityIsValid && isSubmitted;
     const showPhoneError = !phoneIsValid && isSubmitted;
 
-    const doBadInputsExist = !isFirstNameValid 
-      || !isLastNameValid
-      || !isCityValid
-      || !isEmailValid
-      || !isPhoneValid;
+    const doBadInputsExist =
+      !isFirstNameValid ||
+      !isLastNameValid ||
+      !isCityValid ||
+      !isEmailValid ||
+      !isPhoneValid;
 
     return (
       <form
@@ -56,14 +62,14 @@ export class ClassForm extends Component {
           e.preventDefault();
           this.setState({ isSubmitted: true });
           if (doBadInputsExist) {
-            alert("Bad Inputs");
+            alert("Bad Input Data");
           } else {
             userDataHandler({
               firstName: firstNameInput,
               lastName: lastNameInput,
               email: emailInput,
               city: cityInput,
-              phone: phoneInputState
+              phone: phoneInputState,
             });
           }
         }}
@@ -131,9 +137,9 @@ export class ClassForm extends Component {
 
         <ErrorMessage message={cityErrorMessage} show={showCityError} />
 
-        <ClassPhoneInput 
+        <ClassPhoneInput
           phoneInputStateHandler={(phoneInputState) => {
-            this.setState({phoneInputState: phoneInputState});
+            this.setState({ phoneInputState: phoneInputState });
           }}
         />
 

@@ -11,7 +11,7 @@ export function isNameValid(string) {
     string
       .split("")
       .every((char) => char.toUpperCase() !== char.toLowerCase()) &&
-    string.length > 2
+    string.length > 1
   );
 }
 

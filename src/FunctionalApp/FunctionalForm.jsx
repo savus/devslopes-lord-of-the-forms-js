@@ -48,7 +48,7 @@ export const FunctionalForm = ({ handleUserData }) => {
         e.preventDefault();
         setIsSubmitted(true);
         if (doBadInputsExist) {
-          alert("Bad Inputs");
+          alert("Bad Input Data");
         } else {
           handleUserData({
             firstName: firstNameInput,
